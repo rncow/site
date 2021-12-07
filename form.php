@@ -9,8 +9,15 @@
 <form action="" method="get">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br>
-    <input type="submit" value="Отправить">
+    <input type="submit" id="submit" value="Отправить">
 </form>
+<script>
+    document.getElementById('submit').hidden = true;
+    document.getElementById('name').addEventListener('input', displayButton);
+    function displayButton() {
+        document.getElementById('submit').hidden = false;
+    }
+</script>
 
 <?php
 if (isset($_GET["name"])) {
