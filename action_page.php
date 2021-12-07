@@ -4,5 +4,5 @@ if ($_GET["name"] != '') {
         'name' => htmlspecialchars($_GET["name"]), 'length' => mb_strlen($_GET["name"])
     ];
 }
-require_once('form.html');
+require_once('form.php');
 
