@@ -13,11 +13,12 @@
 </form>
 
 <?php
-if (($_GET["name"]) != '') {
-    print("Имя: " . $array['name'] . ", кол-во символов: " . $array['length']);
+if (isset($_GET["name"])) {
+    if (($_GET["name"]) != '') {
+        print("Имя: " . $array['name'] . ", кол-во символов: " . $array['length']);
+    } else print "Имя не было введено.";
 }
-else print "Имя не было введено.";
-phpinfo();
+
 ?>
 
 </body>
