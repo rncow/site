@@ -43,10 +43,10 @@ if (isset($_GET["name"]) && isset($_GET["date"])) {
             ".07." => "июля", ".08." => "августа", ".09." => "сентября",
             ".10." => "октября", ".11." => "ноября", ".12." => "декабря"];
 
-        $date_from_form = date("d.m.Y", strtotime($_GET["date"]));
+        $dateFromForm = date("d.m.Y", strtotime($_GET["date"]));
         $replace = date(".m.", strtotime($_GET["date"]));
-        $date_from_form = str_replace($replace, " ".$monthsList[$replace]." ", $date_from_form);
-        print ("Введённая дата: " . $date_from_form);
+        $dateFromForm = str_replace($replace, " ".$monthsList[$replace]." ", $dateFromForm);
+        print ("Введённая дата: " . $dateFromForm);
     } else print "Дата не была введена.";
 }
 ?>
