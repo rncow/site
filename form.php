@@ -9,13 +9,17 @@
 <form action="" method="get">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br>
-    <input type="submit" id="submit" value="Отправить">
+    <input hidden type="submit" id="submit" value="Отправить">
 </form>
 <script>
-    document.getElementById('submit').hidden = true;
-    document.getElementById('name').addEventListener('input', displayButton);
+    document.getElementById('name').addEventListener('change', displayButton);
     function displayButton() {
-        document.getElementById('submit').hidden = false;
+        if (document.getElementById('name').value != '') {
+            document.getElementById('submit').hidden = false;
+        }
+        else {
+            document.getElementById('submit').hidden = true;
+        }
     }
 </script>
 
