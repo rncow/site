@@ -37,16 +37,9 @@ if (isset($_GET["name"]) && isset($_GET["date"])) {
         print("Имя: " . $array['name'] . ", кол-во символов: " . $array['length'] . '<br>');
     } else print "Имя не было введено.";
 
+include 'static date method.php';
     if (($_GET["date"]) != '') {
-        $monthsList = [".01." => "января", ".02." => "февраля",
-            ".03." => "марта", ".04." => "апреля", ".05." => "мая", ".06." => "июня",
-            ".07." => "июля", ".08." => "августа", ".09." => "сентября",
-            ".10." => "октября", ".11." => "ноября", ".12." => "декабря"];
-
-        $dateFromForm = date("d.m.Y", strtotime($_GET["date"]));
-        $replace = date(".m.", strtotime($_GET["date"]));
-        $dateFromForm = str_replace($replace, " ".$monthsList[$replace]." ", $dateFromForm);
-        print ("Введённая дата: " . $dateFromForm);
+        print ("Введённая дата: " . RuTimeReturn::returnTime($_GET["date"]));
     } else print "Дата не была введена.";
 }
 ?>
