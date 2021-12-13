@@ -1,3 +1,8 @@
+<?php
+include 'RuTime.php';
+include 'WorkWithString.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -37,12 +42,25 @@ if (isset($_GET["name"]) && isset($_GET["date"])) {
         print("Имя: " . $array['name'] . ", кол-во символов: " . $array['length'] . '<br>');
     } else print "Имя не было введено.";
 
-include 'static date method.php';
     if (($_GET["date"]) != '') {
-        print ("Введённая дата: " . RuTimeReturn::returnTime($_GET["date"]));
+        print ("Введённая дата: " . RuTime::getRuTime($_GET["date"]));
     } else print "Дата не была введена.";
 }
 ?>
 
+<!-- Блок для проверки работы класса, который потом можно удалить  -->
+<br>
+<?php
+    $someText = new WorkWithString('Василий Иванович');
+    print 'Объявленная строка: ' . $someText->showString() . '<br>';
+    print 'Длина строки: ' . $someText->lengthOfString() . '<br>';
+    $someText->addStringPart(' и Петька');
+    print 'Дополненная строка: ' . $someText->showString() . '<br>';
+    $someText->rewriteString('Петька и Василий Иванович');
+    print 'Переписанная строка: ' . $someText->showString() . '<br>';
+    $someText->clearString();
+    print 'После двоеточия ничего не будет, т.к. строка очищена:' . $someText->showString();
+?>
+<!-- Конец блока  -->
 </body>
 </html>
