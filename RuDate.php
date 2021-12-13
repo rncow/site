@@ -1,6 +1,6 @@
 <?php
-class RuTime {
-    public static function getRuTime ($date) {
+class RuDate {
+    public static function getRuDate ($date) {
         $monthsList = [".01." => "января", ".02." => "февраля",
             ".03." => "марта", ".04." => "апреля", ".05." => "мая", ".06." => "июня",
             ".07." => "июля", ".08." => "августа", ".09." => "сентября",

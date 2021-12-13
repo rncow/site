@@ -1,5 +1,5 @@
 <?php
-include 'RuTime.php';
+include 'RuDate.php';
 include 'WorkWithString.php';
 ?>
 
@@ -43,7 +43,7 @@ if (isset($_GET["name"]) && isset($_GET["date"])) {
     } else print "Имя не было введено.";
 
     if (($_GET["date"]) != '') {
-        print ("Введённая дата: " . RuTime::getRuTime($_GET["date"]));
+        print ("Введённая дата: " . RuDate::getRuDate($_GET["date"]));
     } else print "Дата не была введена.";
 }
 ?>
