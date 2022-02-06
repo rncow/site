@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Создание таблицы</title>
-    </head>
-    <body>
-        <form action="" method="post">
-            <input type="button" name="buttonName" value="Создать">
-        </form>
-        <?php
-        if (isset($_POST['buttonName'])) {
+ <?php
             $servername = "localhost";
             $username = "root";
             $password = "root";
@@ -34,9 +23,6 @@
             }
 
             $conn->close();
-        }
-        ?>
-    </body>
-</html>
+
 
 
