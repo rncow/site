@@ -1,4 +1,5 @@
 <?php
+
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -10,14 +11,19 @@
         die("Connection failed: " . $conn->connect_error);
     }
     //команда создания таблицы
-    $sql = "CREATE TABLE localize (
-                    id INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                    lng VARCHAR(3) NOT NULL,
-                    lngName VARCHAR(16),
-                    )";
+    $sql = "CREATE TABLE localizedNews (
+                        id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL,
+                        news_id BIGINT NOT NULL,
+                        lang_id BIGINT NOT NULL,
+                        title VARCHAR(200) NOT NULL,
+                        text TEXT NOT NULL,
+                        PRIMARY KEY (id),
+                        FOREIGN KEY (news_id) REFERENCES news(id),
+                        FOREIGN KEY (lang) REFERENCES news(id),
+                        )";
     //выполнение команды
     if ($conn->query($sql) === TRUE) {
-        echo "Table localize created successfully";
+        echo "Table localizedNews created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
