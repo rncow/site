@@ -1,8 +1,8 @@
 <?php
 
-    $servername = "localhost";
+    $servername = "site";
     $username = "root";
-    $password = "root";
+    $password = "";
     $dbname = "MyDB";
     //создание соединения
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,13 +12,13 @@
     }
     //команда создания таблицы
     $sql = "CREATE TABLE localizedNews (
-                        news_id BIGINT NOT NULL,
+                        news_id BIGINT UNSIGNED NOT NULL,
                         language VARCHAR(3) NOT NULL,
                         title VARCHAR(256) NOT NULL,
                         text TEXT NOT NULL,
                         PRIMARY KEY (news_id, language),
                         FOREIGN KEY (news_id) REFERENCES news(id),
-                        FOREIGN KEY (language) REFERENCES localize(lng),
+                        FOREIGN KEY (language) REFERENCES localize(lng)
                         )";
     //выполнение команды
     if ($conn->query($sql) === TRUE) {

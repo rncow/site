@@ -1,7 +1,7 @@
 <?php
-    $servername = "localhost";
+    $servername = "site";
     $username = "root";
-    $password = "root";
+    $password = "";
     $dbname = "MyDB";
     //создание соединения
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,7 +12,7 @@
     //команда создания таблицы
     $sql = "CREATE TABLE localize (
                     lng VARCHAR(3) NOT NULL PRIMARY KEY,
-                    lngName VARCHAR(32),
+                    lngName VARCHAR(32)
                     )";
     //выполнение команды
     if ($conn->query($sql) === TRUE) {

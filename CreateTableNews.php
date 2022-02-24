@@ -1,7 +1,7 @@
  <?php
-            $servername = "localhost";
+            $servername = "site";
             $username = "root";
-            $password = "root";
+            $password = "";
             $dbname = "MyDB";
             //создание соединения
             $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,8 +12,7 @@
             //команда создания таблицы
             $sql = "CREATE TABLE news (
                 id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-
-                date DATETIME NOT NULL
+                date DATE NOT NULL
                 )";
             //выполнение команды
             if ($conn->query($sql) === TRUE) {
