@@ -11,9 +11,8 @@
     }
     //команда создания таблицы
     $sql = "CREATE TABLE localize (
-                    id INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                    lng VARCHAR(3) NOT NULL,
-                    lngName VARCHAR(16),
+                    lng VARCHAR(3) NOT NULL PRIMARY KEY,
+                    lngName VARCHAR(32),
                     )";
     //выполнение команды
     if ($conn->query($sql) === TRUE) {

@@ -12,14 +12,13 @@
     }
     //команда создания таблицы
     $sql = "CREATE TABLE localizedNews (
-                        id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL,
                         news_id BIGINT NOT NULL,
-                        lang_id BIGINT NOT NULL,
-                        title VARCHAR(200) NOT NULL,
+                        language VARCHAR(3) NOT NULL,
+                        title VARCHAR(256) NOT NULL,
                         text TEXT NOT NULL,
-                        PRIMARY KEY (id),
+                        PRIMARY KEY (news_id, language),
                         FOREIGN KEY (news_id) REFERENCES news(id),
-                        FOREIGN KEY (lang) REFERENCES news(id),
+                        FOREIGN KEY (language) REFERENCES localize(lng),
                         )";
     //выполнение команды
     if ($conn->query($sql) === TRUE) {

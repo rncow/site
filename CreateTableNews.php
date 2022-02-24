@@ -11,9 +11,8 @@
             }
             //команда создания таблицы
             $sql = "CREATE TABLE news (
-                id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                title VARCHAR(200) NOT NULL,
-                text TEXT NOT NULL,
+                id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
                 date DATETIME NOT NULL
                 )";
             //выполнение команды
