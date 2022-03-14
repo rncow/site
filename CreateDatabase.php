@@ -1,7 +1,7 @@
 <?php
-            $servername = "localhost";
+            $servername = "phpstudy";
             $username = "root";
-            $password = "root";
+            $password = "";
             //создание соединения
             $conn = new mysqli($servername, $username, $password);
             //чек соединения
