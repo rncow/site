@@ -1,5 +1,6 @@
 <?php
             $servername = "phpstudy";
+            $servername = "site";
             $username = "root";
             $password = "";
             //создание соединения
