@@ -1,4 +1,7 @@
 <!doctype html>
+<?php
+    setcookie("language", "2", time() + (86400 * 30), '/');
+?>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -11,23 +14,16 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-<input type="radio" id="languageChoiceRus" name="language" value="rus">
-<label for="languageChoiceRus">Русский</label>
-<input type="radio" id="languageChoiceEng" name="language" value="eng">
-<label for="languageChoiceEng">English</label>
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "MyDB";
-
-    //создание соединения
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    //чек соединения
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    require('./config.php');
+    global $conn;
+    $languagesSql = "SELECT * FROM languages";
+    $resultData = $conn->query($languagesSql);
+    while ($row = mysqli_fetch_array($resultData)) {
+    echo '<a href="language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
     }
-    //проверка, есть ли GET запрос
+
+    //проверка, есть ли GET запрос на пагинацию
     if (isset($_GET['pageno'])) {
         //если да то переменной $pageno присваиваем значение
         $pageno = $_GET['pageno'];
@@ -39,9 +35,13 @@
     $sizePage = 5;
     //вычисление с какого объекта начать выводить
     $offset = ($pageno-1) * $sizePage;
-
+    if(!isset($_COOKIE["language"])) {
+        $languageID = 2;
+    } else {
+        $languageID = $_COOKIE["language"];
+    }
     //запрос для получения количества элементов
-    $countSql = "SELECT COUNT(*) FROM news";
+    $countSql = "SELECT COUNT(*) FROM news_localized WHERE language_id = $languageID";
     //отправление запроса для получения количества элементов
     $result = $conn->query($countSql);
     //получение результата
@@ -50,7 +50,10 @@
     $total_pages = ceil($total_rows / $sizePage);
 
     //запрос для получения данных
-    $sql = "SELECT * FROM news ORDER BY date LIMIT $offset, $sizePage";
+    $sql = "SELECT news_localized.title, news_localized.text, news.date FROM news_localized 
+            INNER JOIN news ON news_localized.news_id = news.id 
+            WHERE language_id = $languageID 
+            ORDER BY date LIMIT $offset, $sizePage";
     //выполнение команды
     $resultData = $conn->query($sql);
 ?>
