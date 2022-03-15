@@ -1,14 +1,6 @@
  <?php
-            $servername = "phpstudy";
-            $username = "root";
-            $password = "";
-            $dbname = "MyDB";
-            //создание соединения
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            //чек соединения
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+             require('./config.php');
+             global $conn;
             //команда создания таблицы
             $sql = "CREATE TABLE news (
                 id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

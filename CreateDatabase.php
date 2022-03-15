@@ -1,14 +1,6 @@
 <?php
-            $servername = "phpstudy";
-            $servername = "site";
-            $username = "root";
-            $password = "";
-            //создание соединения
-            $conn = new mysqli($servername, $username, $password);
-            //чек соединения
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            require('./config.php');
+            global $conn;
             //создание бд
             $sql = "CREATE DATABASE MyDB";
             if ($conn->query($sql) === TRUE) {

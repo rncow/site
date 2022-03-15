@@ -1,28 +1,20 @@
 <?php
 
-    $servername = "phpstudy";
-    $username = "root";
-    $password = "";
-    $dbname = "MyDB";
-    //создание соединения
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    //чек соединения
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require('./config.php');
+    global $conn;
     //команда создания таблицы
-    $sql = "CREATE TABLE localizedNews (
+    $sql = "CREATE TABLE news_localized (
+                        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                         news_id BIGINT UNSIGNED NOT NULL,
-                        language VARCHAR(3) NOT NULL,
-                        title VARCHAR(256) NOT NULL,
+                        language_id BIGINT NOT NULL,
+                        title VARCHAR(255) NOT NULL,
                         text TEXT NOT NULL,
-                        PRIMARY KEY (news_id, language),
                         FOREIGN KEY (news_id) REFERENCES news(id),
-                        FOREIGN KEY (language) REFERENCES localize(lng)
+                        FOREIGN KEY (language_id) REFERENCES languages(id)
                         )";
     //выполнение команды
     if ($conn->query($sql) === TRUE) {
-        echo "Table localizedNews created successfully";
+        echo "Table news_localized created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
