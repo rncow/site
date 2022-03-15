@@ -50,7 +50,7 @@
     $total_pages = ceil($total_rows / $sizePage);
 
     //запрос для получения данных
-    $sql = "SELECT news_localized.title, news_localized.text, news.date FROM news_localized 
+    $sql = "SELECT news_localized.title, news_localized.text, news.date, news.id FROM news_localized 
             INNER JOIN news ON news_localized.news_id = news.id 
             WHERE language_id = $languageID 
             ORDER BY date LIMIT $offset, $sizePage";
@@ -62,11 +62,13 @@
         <th>Заголовок</th>
         <th>Текст новости</th>
         <th>Дата публикации</th>
+        <th>Удалить?</th>
     </tr>
 <?php
     while ($row = mysqli_fetch_array($resultData)) {
         //вывод
-        echo '<tr><td>' . $row['title'] . '</td><td>'. $row['text'] . '</td><td>' . $row['date'] . '</td></tr>';
+        echo '<tr><td>' . $row['title'] . '</td><td>'. $row['text'] . '</td><td>'
+             . $row['date'] . '</td><td><a href="deleteNews.php?newsID=' . $row['id'] . '">Удалить</a></td></tr>';
     }
     $conn->close();
 ?>
