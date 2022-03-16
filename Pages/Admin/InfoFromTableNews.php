@@ -20,7 +20,7 @@
     $languagesSql = "SELECT * FROM languages";
     $resultData = $conn->query($languagesSql);
     while ($row = mysqli_fetch_array($resultData)) {
-    echo '<a href="Scripts/language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
+    echo '<a href="../Scripts/language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
     }
 
     //проверка, есть ли GET запрос на пагинацию
@@ -62,12 +62,13 @@
         <th>Заголовок</th>
         <th>Текст новости</th>
         <th>Дата публикации</th>
+        <th>Удалить?</th>
     </tr>
 <?php
     while ($row = mysqli_fetch_array($resultData)) {
         //вывод
         echo '<tr><td>' . $row['title'] . '</td><td>'. $row['text'] . '</td><td>'
-             . $row['date'] . '</td></tr>';
+             . $row['date'] . '</td><td><a href="deleteNews.php?newsID=' . $row['id'] . '">Удалить</a></td></tr>';
     }
     $conn->close();
 ?>
