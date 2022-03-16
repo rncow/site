@@ -1,5 +1,5 @@
 <?php
-require('./config.php');
+require('./Config.php');
 global $conn;
 if(isset($_GET['newsID'])) {
     $sql = "DELETE FROM news WHERE id = " . $_GET['newsID'];

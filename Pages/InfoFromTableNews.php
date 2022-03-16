@@ -1,6 +1,6 @@
 <!doctype html>
 <?php
-    setcookie("language", "2", time() + (86400 * 30), '/');
+    spl_autoload_register();
 ?>
 <html lang="ru">
 <head>
@@ -15,12 +15,12 @@
 </head>
 <body>
 <?php
-    require('./config.php');
-    global $conn;
+    $config = new Scripts\Config;
+    $conn = $config->ReturnConnection();
     $languagesSql = "SELECT * FROM languages";
     $resultData = $conn->query($languagesSql);
     while ($row = mysqli_fetch_array($resultData)) {
-    echo '<a href="language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
+    echo '<a href="Scripts/language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
     }
 
     //проверка, есть ли GET запрос на пагинацию

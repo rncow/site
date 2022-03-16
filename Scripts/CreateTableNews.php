@@ -1,5 +1,5 @@
  <?php
-             require('./config.php');
+             require('./Config.php');
              global $conn;
             //команда создания таблицы
             $sql = "CREATE TABLE news (

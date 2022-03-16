@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    spl_autoload_register();
+?>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -48,8 +51,8 @@
 <?php
 if (isset($_GET["titleRu"]) && isset($_GET["textRu"]) && isset($_GET["titleEn"]) && isset($_GET["textEn"])
     && isset($_GET["date"])) {
-    require('./config.php');
-    global $conn;
+    $config = new Scripts\Config;
+    $conn = $config->ReturnConnection();
 
     $titleRu = addslashes($_GET["titleRu"]);
     $textRu = addslashes($_GET["textRu"]);

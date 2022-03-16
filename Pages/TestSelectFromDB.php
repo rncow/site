@@ -1,6 +1,6 @@
 <?php
 
-require('./config.php');
+require('./Config.php');
 global $conn;
 
 $sql = "SELECT COUNT(*) FROM news";

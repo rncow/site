@@ -1,5 +1,5 @@
 <?php
-            require('./config.php');
+            require('./Config.php');
             global $conn;
             //создание бд
             $sql = "CREATE DATABASE MyDB";
