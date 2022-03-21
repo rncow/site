@@ -20,7 +20,7 @@
     $languagesSql = "SELECT * FROM languages";
     $resultData = $conn->query($languagesSql);
     while ($row = mysqli_fetch_array($resultData)) {
-    echo '<a href="Scripts/language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
+    echo '<a href="js/language.php?languageID=' . $row['id'] . '">' . $row['name'] .'</a> ';
     }
 
     //проверка, есть ли GET запрос на пагинацию
@@ -35,6 +35,7 @@
     $sizePage = 5;
     //вычисление с какого объекта начать выводить
     $offset = ($pageno-1) * $sizePage;
+
     if(!isset($_COOKIE["language"])) {
         $languageID = 2;
     } else {

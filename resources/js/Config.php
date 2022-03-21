@@ -1,5 +1,5 @@
 <?php
-namespace Scripts;
+namespace resources\js;
 use mysqli;
 
 class Config {

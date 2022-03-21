@@ -1,15 +1,19 @@
 <?php
+
+use app\Controllers\News;
+
 $routes = [
     'admin' => [
-        'file' => null,
+        'file' => 'Pages/Admin/main.html',
         'child' => [
 
             'news' => [
-                'file' => 'Pages/Admin/AddInfoToTableForm.php',
+                'file' => 'test',
                 'child' => [
 
                     'add' => [
-                        'file' => 'Pages/Admin/AddInfoToTableForm.php',
+                        'controller' => News::class,
+                        'method' => 'getNews',
                         'child' => [
 
                         ],
@@ -25,11 +29,12 @@ $routes = [
         ],
     ],
     'news' => [
-        'file' => null,
+        'file' => 'Pages/main.html',
         'child' => [
 
             'read' => [
-                'file' => 'Pages/InfoFromTableNews.php',
+                'controller' => News::class,
+                'method' => 'getNews',
                 'child' => [
 
                 ],
@@ -37,19 +42,3 @@ $routes = [
         ]
     ]
 ];
-class Counter {
-    private $counter = 0;
-    function ExploreRoutes(array $routes, array $uri) {
-        foreach ($routes as $key => $array) {
-            if ($uri[$this->counter] == $key) {
-                if ($array['child']) {
-                    $this->counter++;
-                    return $this->ExploreRoutes($array['child'], $uri);
-                } else {
-                    return $array['file'];
-                }
-            }
-        }
-        return "Pages/error404.html";
-    }
-}
