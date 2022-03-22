@@ -1,6 +1,4 @@
-<?php
-    include 'layouts/header.php';
-?>
+<?php include 'layouts/header.php';?>
     <table>
         <tr>
             <th>Заголовок</th>
@@ -15,7 +13,4 @@
         </tr>
     <?php endforeach ?>
     </table>
-<?php
-include 'layouts/footer.php';
-
-
+<?php include 'layouts/footer.php';

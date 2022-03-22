@@ -2,6 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Новости</title>
+    <title>site</title>
 </head>
 <body>

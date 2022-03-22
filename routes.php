@@ -1,9 +1,17 @@
 <?php
 
+use app\Controllers\Authorization;
 use app\Controllers\News;
 
 $routes = [
-    '' => [
+    'register' => [
+        'controller' => Authorization::class,
+        'method' => 'register',
+        'child' => [
+
+        ],
+    ],
+    'login' => [
         'controller' => Authorization::class,
         'method' => 'login',
         'child' => [
