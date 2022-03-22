@@ -11,12 +11,4 @@ require 'app/libs.php';
 
 $returnRoute = new app\Classes\Routes;
 
-use app\Models\News as NewsModel;
-
-$col1 = "news_id";
-$col2 = "title";
-$col3 = "text";
-$col4 = "date";
-$langID = 1;
-
 $returnRoute->ExploreRoutes($routes, $segments);

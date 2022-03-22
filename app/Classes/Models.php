@@ -26,6 +26,7 @@ abstract class Models {
     private $joins;
     private $where;
     private $orderBy;
+    private $limit;
 
     public function __construct()
     {
@@ -160,6 +161,13 @@ abstract class Models {
         return $this;
     }
 
+    function limit(int $offset, int $row_count)
+    {
+        $this->limit .= ' LIMIT ' . $offset . ', ' . $row_count;
+
+        return $this;
+    }
+
     /**
      * Формирует SELECT запрос из частей.
      * Возвращает результат запроса в виде ассоциативного массива
@@ -180,6 +188,10 @@ abstract class Models {
 
         if ($this->orderBy) {
             $queryString .= $this->orderBy;
+        }
+
+        if ($this->limit) {
+            $queryString .= $this->limit;
         }
 
         $sqlData = $this->conn->query($queryString);

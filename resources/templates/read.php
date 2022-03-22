@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Успех</title>
-</head>
-<body>
-    <h1>Удачный рендер новостей</h1>
-    <img src="../storage/images/бабулех.png">
+<?php
+    include 'layouts/header.php';
+?>
     <table>
         <tr>
             <th>Заголовок</th>
@@ -21,6 +15,7 @@
         </tr>
     <?php endforeach ?>
     </table>
-</body>
-</html>
+<?php
+include 'layouts/footer.php';
+
 

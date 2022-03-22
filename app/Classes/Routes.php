@@ -2,6 +2,8 @@
 
 namespace app\Classes;
 
+use app\Controllers\Error;
+
 class Routes
 {
 
@@ -21,9 +23,11 @@ class Routes
                     $function = $array['method'];
 
                     $class->$function();
+
+                    return 0;
                 }
             }
         }
-        require "resources/templates/error404.html";
+        (new Error)->e404();
     }
 }

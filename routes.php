@@ -3,6 +3,13 @@
 use app\Controllers\News;
 
 $routes = [
+    '' => [
+        'controller' => Authorization::class,
+        'method' => 'login',
+        'child' => [
+
+        ],
+    ],
     'admin' => [
         'file' => 'Pages/Admin/main.html',
         'child' => [
@@ -29,7 +36,8 @@ $routes = [
         ],
     ],
     'news' => [
-        'file' => 'Pages/main.html',
+        'controller' => News::class,
+        'method' => 'main',
         'child' => [
 
             'read' => [
