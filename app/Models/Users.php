@@ -12,6 +12,11 @@ class Users extends Models
 {
     protected $table = 'users';
 
+    public function getUser (string $login)
+    {
+        return $this->select('*')->where("login = '$login'")->get()[0];
+    }
+
     public function createUser (string $login, string $password)
     {
         $this->select('login', 'password_hash')->insert($login, $password);

@@ -11,4 +11,5 @@ use app\Classes\Models;
 class News extends Models
 {
     protected $table = 'news';
+
 }

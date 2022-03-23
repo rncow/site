@@ -35,7 +35,7 @@ abstract class Models {
 
     /**
      * Выборка стобцов таблицы для формирования запросов
-     * @param ...$columns string столбцы таблицы
+     * @param ...$columns array столбцы таблицы
      * @return Models
      */
 

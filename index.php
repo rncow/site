@@ -1,4 +1,7 @@
 <?php
+
+use app\Models\Users;
+
 spl_autoload_register();
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

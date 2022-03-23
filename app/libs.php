@@ -1,6 +1,6 @@
 <?php
 
-    function render($tmpl, array $params = []): string
+    function render(string $tmpl, array $params = []): string
     {
         ob_start();
         extract($params);

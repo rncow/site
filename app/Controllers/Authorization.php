@@ -8,6 +8,23 @@ class Authorization
 {
     public function login ()
     {
+        if (isset($_POST['login']) && isset($_POST['password'])) {
+
+            $login = $_POST['login'];
+
+            $user = (new UsersModel)->getUser($login);
+
+            if ($user) {
+                if (password_verify($_POST['password'], $user['password_hash'])) {
+                    echo 'Пользователь авторизирован';
+
+                } else {
+                    echo 'Неправильный пароль';
+                }
+            } else {
+                echo 'Такого пользователя не существует';
+            }
+        }
         echo render('login');
     }
 
